@@ -1,0 +1,41 @@
+body {
+    font-family: 'Lato', Arial, Helvetica, sans-serif;
+}
+
+.bg-primary {
+    background-color: #04293A !important;
+    background-image: none;
+}
+
+a.navbar-item,
+.navbar-menu {
+    background-color: #04293A !important;
+}
+
+.navbar-link.is-active,
+.navbar-link:focus,
+.navbar-link:focus-within,
+.navbar-link:hover,
+a.navbar-item.is-active,
+a.navbar-item:focus,
+a.navbar-item:focus-within,
+a.navbar-item:hover {
+    color: #3273dc;
+}
+
+.message-body pre {
+    background-color: #f5f5f5;
+    color: #4a4a4a;
+    padding: 1.25em 1.5em;
+}
+
+.secretron {
+    filter: blur(0.2em);
+}
+
+.secretron.is-active,
+.secretron:focus,
+.secretron:focus-within,
+.secretron:hover {
+    filter: blur(0);
+}
