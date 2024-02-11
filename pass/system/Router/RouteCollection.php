@@ -123,7 +123,7 @@ class RouteCollection implements RouteCollectionInterface
      *             'handler' => handler,
      *             'from'    => from,
      *         ],
-     *             ],
+     *     ],
      *     // redirect route
      *     '*' => [
      *          routeKey(regex)(from) => [
@@ -341,7 +341,7 @@ class RouteCollection implements RouteCollectionInterface
                 continue;
             }
 
-        require $routesFile;
+            require $routesFile;
         }
 
         $this->discoverRoutes();
@@ -561,7 +561,7 @@ class RouteCollection implements RouteCollectionInterface
      * Returns the raw array of available routes.
      *
      * @param non-empty-string|null $verb
-     * @param bool $includeWildcard Whether to include '*' routes.
+     * @param bool                  $includeWildcard Whether to include '*' routes.
      */
     public function getRoutes(?string $verb = null, bool $includeWildcard = true): array
     {
@@ -708,7 +708,7 @@ class RouteCollection implements RouteCollectionInterface
     {
         if (isset($this->routes['*'][$routeKey]['redirect'])) {
             return true;
-            }
+        }
 
         // This logic is not used. Should be deprecated?
         $routeName = $this->routes['*'][$routeKey]['name'] ?? null;
@@ -730,7 +730,7 @@ class RouteCollection implements RouteCollectionInterface
     {
         if (isset($this->routes['*'][$routeKey]['redirect'])) {
             return $this->routes['*'][$routeKey]['redirect'];
-            }
+        }
 
         // This logic is not used. Should be deprecated?
         $routeName = $this->routes['*'][$routeKey]['name'] ?? null;
@@ -1676,7 +1676,7 @@ class RouteCollection implements RouteCollectionInterface
         $this->routes = $this->routesNames = ['*' => []];
 
         foreach ($this->defaultHTTPMethods as $verb) {
-            $this->routes[$verb] = [];
+            $this->routes[$verb]      = [];
             $this->routesNames[$verb] = [];
         }
 

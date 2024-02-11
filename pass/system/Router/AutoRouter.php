@@ -67,9 +67,9 @@ final class AutoRouter implements AutoRouterInterface
         string $httpVerb
     ) {
         $this->cliRoutes          = $cliRoutes;
-        $this->defaultNamespace     = $defaultNamespace;
-        $this->translateURIDashes   = $translateURIDashes;
-        $this->httpVerb             = $httpVerb;
+        $this->defaultNamespace   = $defaultNamespace;
+        $this->translateURIDashes = $translateURIDashes;
+        $this->httpVerb           = $httpVerb;
 
         $this->controller = $defaultController;
         $this->method     = $defaultMethod;
@@ -138,20 +138,20 @@ final class AutoRouter implements AutoRouterInterface
                         throw new PageNotFoundException(
                             'Cannot access CLI Route: ' . $uri
                         );
-                }
+                    }
 
                     if (strpos($handler, $controller . '::' . $methodName) === 0) {
                         throw new PageNotFoundException(
                             'Cannot access CLI Route: ' . $uri
                         );
-                }
+                    }
 
                     if ($handler === $controller) {
-                throw new PageNotFoundException(
+                        throw new PageNotFoundException(
                             'Cannot access CLI Route: ' . $uri
-                );
-            }
-        }
+                        );
+                    }
+                }
             }
         }
 

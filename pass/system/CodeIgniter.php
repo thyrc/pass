@@ -54,7 +54,7 @@ class CodeIgniter
     /**
      * The current version of CodeIgniter Framework
      */
-    public const CI_VERSION = '4.4.4';
+    public const CI_VERSION = '4.4.5';
 
     /**
      * App startup time.
@@ -374,11 +374,11 @@ class CodeIgniter
             throw $e;
         }
 
-            if ($returnResponse) {
-                return $this->response;
-            }
+        if ($returnResponse) {
+            return $this->response;
+        }
 
-            $this->sendResponse();
+        $this->sendResponse();
     }
 
     /**

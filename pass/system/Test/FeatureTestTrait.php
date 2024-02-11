@@ -54,9 +54,9 @@ trait FeatureTestTrait
                 if (isset($route[3])) {
                     $collection->{$route[0]}($route[1], $route[2], $route[3]);
                 } else {
-                $collection->{$route[0]}($route[1], $route[2]);
+                    $collection->{$route[0]}($route[1], $route[2]);
+                }
             }
-        }
         }
 
         $this->routes = $collection;
@@ -272,12 +272,12 @@ trait FeatureTestTrait
      */
     protected function setupRequest(string $method, ?string $path = null): IncomingRequest
     {
-        $config  = config(App::class);
+        $config = config(App::class);
         $uri    = new SiteURI($config);
 
         // $path may have a query in it
         $path  = URI::removeDotSegments($path);
-        $parts                   = explode('?', $path);
+        $parts = explode('?', $path);
         $path  = $parts[0];
         $query = $parts[1] ?? '';
 
@@ -326,7 +326,7 @@ trait FeatureTestTrait
      *
      * Always populate the GET vars based on the URI.
      *
-     * @param string $method HTTP verb
+     * @param string               $method HTTP verb
      * @param non-empty-array|null $params
      *
      * @return Request

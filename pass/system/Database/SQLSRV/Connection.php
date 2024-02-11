@@ -344,8 +344,8 @@ class Connection extends BaseConnection
         $sql = 'SELECT
                 COLUMN_NAME, DATA_TYPE, CHARACTER_MAXIMUM_LENGTH, NUMERIC_PRECISION,
                 COLUMN_DEFAULT, IS_NULLABLE
-			FROM INFORMATION_SCHEMA.COLUMNS
-			WHERE TABLE_NAME= ' . $this->escape(($table));
+            FROM INFORMATION_SCHEMA.COLUMNS
+            WHERE TABLE_NAME= ' . $this->escape(($table));
 
         if (($query = $this->query($sql)) === false) {
             throw new DatabaseException(lang('Database.failGetFieldData'));

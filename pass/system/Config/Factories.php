@@ -91,8 +91,8 @@ class Factories
     /**
      * Define the class to load. You can *override* the concrete class.
      *
-     * @param string $component Lowercase, plural component name
-     * @param string $alias     Class alias. See the $aliases property.
+     * @param string       $component Lowercase, plural component name
+     * @param string       $alias     Class alias. See the $aliases property.
      * @param class-string $classname FQCN to be loaded
      */
     public static function define(string $component, string $alias, string $classname): void
@@ -204,8 +204,8 @@ class Factories
         if (isset(self::$instances[$options['component']][$class])) {
             self::setAlias($options['component'], $alias, $class);
 
-        return self::$instances[$options['component']][$class];
-    }
+            return self::$instances[$options['component']][$class];
+        }
 
         return null;
     }
@@ -461,9 +461,9 @@ class Factories
         // Force a configuration to exist for this component
         self::getOptions($component);
 
-        $class    = get_class($instance);
+        $class = get_class($instance);
 
-        self::$instances[$component][$class]    = $instance;
+        self::$instances[$component][$class] = $instance;
         self::$aliases[$component][$alias]   = $class;
 
         if (self::isConfig($component)) {

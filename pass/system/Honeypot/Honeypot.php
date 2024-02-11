@@ -98,7 +98,7 @@ class Honeypot
 
         if ($response->getCSP()->enabled() && ($bodyBefore !== $bodyAfter)) {
             // Add style tag for the container tag in the head tag.
-            $style = '<style ' . csp_style_nonce() . '>#' . $this->config->containerId . ' { display:none }</style>';
+            $style     = '<style ' . csp_style_nonce() . '>#' . $this->config->containerId . ' { display:none }</style>';
             $bodyAfter = str_ireplace('</head>', $style . '</head>', $bodyAfter);
         }
 

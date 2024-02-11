@@ -101,8 +101,8 @@ class ModelGenerator extends BaseCommand
             $baseClass = $match[1];
         }
 
-        $table   = is_string($table) ? $table : plural(strtolower($baseClass));
-        $return  = is_string($return) ? $return : 'array';
+        $table  = is_string($table) ? $table : plural(strtolower($baseClass));
+        $return = is_string($return) ? $return : 'array';
 
         if (! in_array($return, ['array', 'object', 'entity'], true)) {
             // @codeCoverageIgnoreStart

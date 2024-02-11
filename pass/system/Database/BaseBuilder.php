@@ -169,8 +169,11 @@ class BaseBuilder
      *   constraints?: array,
      *   setQueryAsData?: string,
      *   sql?: string,
-     *   alias?: string
+     *   alias?: string,
+     *   fieldTypes?: array<string, array<string, string>>
      * }
+     *
+     * fieldTypes: [ProtectedTableName => [FieldName => Type]]
      */
     protected $QBOptions;
 
@@ -728,7 +731,7 @@ class BaseBuilder
 
         if ($key instanceof RawSql) {
             if ($value === null) {
-            $keyValue = [(string) $key => $key];
+                $keyValue   = [(string) $key => $key];
                 $rawSqlOnly = true;
             } else {
                 $keyValue = [(string) $key => $value];
@@ -1758,6 +1761,8 @@ class BaseBuilder
     /**
      * Compiles batch insert/update/upsert strings and runs the queries
      *
+     * @param '_deleteBatch'|'_insertBatch'|'_updateBatch'|'_upsertBatch' $renderMethod
+     *
      * @return false|int|string[] Number of rows inserted or FALSE on failure, SQL array when testMode
      *
      * @throws DatabaseException
@@ -1965,7 +1970,7 @@ class BaseBuilder
      *
      * @used-by batchExecute
      *
-     * @param string   $table Protected table name
+     * @param string                 $table  Protected table name
      * @param list<string>           $keys   QBKeys
      * @param list<list<int|string>> $values QBSet
      */
@@ -2192,7 +2197,7 @@ class BaseBuilder
      *
      * @used-by batchExecute
      *
-     * @param string   $table Protected table name
+     * @param string                 $table  Protected table name
      * @param list<string>           $keys   QBKeys
      * @param list<list<int|string>> $values QBSet
      */
@@ -2560,7 +2565,7 @@ class BaseBuilder
      *
      * @used-by batchExecute
      *
-     * @param string   $table Protected table name
+     * @param string                 $table  Protected table name
      * @param list<string>           $keys   QBKeys
      * @param list<list<int|string>> $values QBSet
      */
@@ -2822,7 +2827,7 @@ class BaseBuilder
      *
      * @used-by batchExecute
      *
-     * @param string   $table Protected table name
+     * @param string       $table Protected table name
      * @param list<string> $keys  QBKeys
      * @paramst<string|int>> $values QBSet
      */
@@ -3378,16 +3383,16 @@ class BaseBuilder
                 : '';
             $this->pregOperators = [
                 '\s*(?:<|>|!)?=\s*', // =, <=, >=, !=
-                '\s*<>?\s*', // <, <>
-                '\s*>\s*', // >
-                '\s+IS NULL', // IS NULL
-                '\s+IS NOT NULL', // IS NOT NULL
-                '\s+EXISTS\s*\(.*\)', // EXISTS(sql)
+                '\s*<>?\s*',         // <, <>
+                '\s*>\s*',           // >
+                '\s+IS NULL',             // IS NULL
+                '\s+IS NOT NULL',         // IS NOT NULL
+                '\s+EXISTS\s*\(.*\)',     // EXISTS (sql)
                 '\s+NOT EXISTS\s*\(.*\)', // NOT EXISTS(sql)
-                '\s+BETWEEN\s+', // BETWEEN value AND value
-                '\s+IN\s*\(.*\)', // IN(list)
-                '\s+NOT IN\s*\(.*\)', // NOT IN (list)
-                '\s+LIKE\s+\S.*(' . $_les . ')?', // LIKE 'expr'[ ESCAPE '%s']
+                '\s+BETWEEN\s+',          // BETWEEN value AND value
+                '\s+IN\s*\(.*\)',         // IN (list)
+                '\s+NOT IN\s*\(.*\)',     // NOT IN (list)
+                '\s+LIKE\s+\S.*(' . $_les . ')?',     // LIKE 'expr'[ ESCAPE '%s']
                 '\s+NOT LIKE\s+\S.*(' . $_les . ')?', // NOT LIKE 'expr'[ ESCAPE '%s']
             ];
         }
@@ -3409,18 +3414,18 @@ class BaseBuilder
         $whereKey = trim($whereKey);
 
         $pregOperators = [
-            '\s*(?:<|>|!)?=', // =, <=, >=, !=
-            '\s*<>?',         // <, <>
-            '\s*>',           // >
-            '\s+IS NULL',     // IS NULL
-            '\s+IS NOT NULL', // IS NOT NULL
+            '\s*(?:<|>|!)?=',         // =, <=, >=, !=
+            '\s*<>?',                 // <, <>
+            '\s*>',                   // >
+            '\s+IS NULL',             // IS NULL
+            '\s+IS NOT NULL',         // IS NOT NULL
             '\s+EXISTS\s*\(.*\)',     // EXISTS (sql)
             '\s+NOT EXISTS\s*\(.*\)', // NOT EXISTS (sql)
             '\s+BETWEEN\s+',          // BETWEEN value AND value
             '\s+IN\s*\(.*\)',         // IN (list)
             '\s+NOT IN\s*\(.*\)',     // NOT IN (list)
-            '\s+LIKE',        // LIKE
-            '\s+NOT LIKE',    // NOT LIKE
+            '\s+LIKE',                // LIKE
+            '\s+NOT LIKE',            // NOT LIKE
         ];
 
         return preg_match_all(

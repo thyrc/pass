@@ -113,10 +113,10 @@ abstract class BaseHandler implements SessionHandlerInterface
 
         $cookie = config(CookieConfig::class);
 
-            // Session cookies have no prefix.
-            $this->cookieDomain = $cookie->domain;
-            $this->cookiePath   = $cookie->path;
-            $this->cookieSecure = $cookie->secure;
+        // Session cookies have no prefix.
+        $this->cookieDomain = $cookie->domain;
+        $this->cookiePath   = $cookie->path;
+        $this->cookieSecure = $cookie->secure;
 
         $this->ipAddress = $ipAddress;
     }

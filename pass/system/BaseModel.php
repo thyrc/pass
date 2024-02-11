@@ -424,7 +424,7 @@ abstract class BaseModel
      * Updates a single record in the database.
      * This method works only with dbCalls.
      *
-     * @param array|int|string|null $id   ID
+     * @param array|int|string|null $id  ID
      * @param array|null            $row Row data
      * @phpstan-param row_array|null $row
      */
@@ -482,7 +482,7 @@ abstract class BaseModel
      *
      * @param array|null $row Row data
      * @phpstan-param row_array|null $row
-     * @param bool       $returnSQL Set to true to return Query String
+     * @param bool $returnSQL Set to true to return Query String
      *
      * @return BaseResult|false|Query|string
      */
@@ -750,7 +750,7 @@ abstract class BaseModel
      *
      * @param array|object|null $row Row data
      * @phpstan-param row_array|object|null $row
-     * @param bool              $returnID Whether insert ID should be returned or not.
+     * @param bool $returnID Whether insert ID should be returned or not.
      *
      * @return bool|int|string insert ID or true on success. false on failure.
      * @phpstan-return ($returnID is true ? int|string|false : bool)
@@ -858,9 +858,9 @@ abstract class BaseModel
      *
      * @param list<array|object>|null $set an associative array of insert values
      * @phpstan-param list<row_array|object>|null $set
-     * @param bool|null  $escape    Whether to escape values
-     * @param int        $batchSize The size of the batch to run
-     * @param bool       $testing   True means only number of records is returned, false will execute the query
+     * @param bool|null $escape    Whether to escape values
+     * @param int       $batchSize The size of the batch to run
+     * @param bool      $testing   True means only number of records is returned, false will execute the query
      *
      * @return bool|int Number of rows inserted or FALSE on failure
      *
@@ -1175,7 +1175,7 @@ abstract class BaseModel
      *
      * @param array|null $row Row data
      * @phpstan-param row_array|null $row
-     * @param bool       $returnSQL Set to true to return Query String
+     * @param bool $returnSQL Set to true to return Query String
      *
      * @return BaseResult|false|Query|string
      */
@@ -1575,7 +1575,7 @@ abstract class BaseModel
      * currently so that rules don't block updating when only updating
      * a partial row.
      *
-     * @param array      $rules Array containing field name and rule
+     * @param array $rules Array containing field name and rule
      * @param array $row   Row data (@TODO Remove null in param type)
      * @phpstan-param row_array $row
      */
@@ -1685,8 +1685,8 @@ abstract class BaseModel
      * to string on all Time instances
      *
      * @param object $object      Object
-     * @param bool          $onlyChanged Only Changed Property
-     * @param bool          $recursive   If true, inner entities will be cast as array as well
+     * @param bool   $onlyChanged Only Changed Property
+     * @param bool   $recursive   If true, inner entities will be cast as array as well
      *
      * @return array<string, mixed>
      *
@@ -1714,21 +1714,21 @@ abstract class BaseModel
         }
 
         return array_map(function ($value) {
-                if ($value instanceof Time) {
-                    return $this->timeToDate($value);
-                }
+            if ($value instanceof Time) {
+                return $this->timeToDate($value);
+            }
 
-                return $value;
-            }, $properties);
-        }
+            return $value;
+        }, $properties);
+    }
 
     /**
      * Takes a class and returns an array of its public and protected
      * properties as an array with raw values.
      *
      * @param object $object      Object
-     * @param bool          $onlyChanged Only Changed Property
-     * @param bool          $recursive   If true, inner entities will be casted as array as well
+     * @param bool   $onlyChanged Only Changed Property
+     * @param bool   $recursive   If true, inner entities will be casted as array as well
      *
      * @return array<string, mixed>
      *
@@ -1762,7 +1762,7 @@ abstract class BaseModel
      *
      * @param array|object|null $row Row data
      * @phpstan-param row_array|object|null $row
-     * @param string            $type Type of data (insert|update)
+     * @param string $type Type of data (insert|update)
      *
      * @throws DataException
      * @throws InvalidArgumentException

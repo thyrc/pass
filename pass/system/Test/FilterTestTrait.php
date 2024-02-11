@@ -144,13 +144,13 @@ trait FilterTestTrait
 
             $filterInstances = [];
 
-        foreach ($filterClasses as $class) {
-            // Get an instance
-            $filter = new $class();
+            foreach ($filterClasses as $class) {
+                // Get an instance
+                $filter = new $class();
 
-            if (! $filter instanceof FilterInterface) {
-                throw FilterException::forIncorrectInterface(get_class($filter));
-            }
+                if (! $filter instanceof FilterInterface) {
+                    throw FilterException::forIncorrectInterface(get_class($filter));
+                }
 
                 $filterInstances[] = $filter;
             }

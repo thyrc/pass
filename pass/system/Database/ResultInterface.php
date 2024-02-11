@@ -58,7 +58,7 @@ interface ResultInterface
      * If row doesn't exist, returns null.
      *
      * @param int|string $n    The index of the results to return, or column name.
-     * @param string $type The type of result object. 'array', 'object' or class name.
+     * @param string     $type The type of result object. 'array', 'object' or class name.
      * @phpstan-param class-string|'array'|'object' $type
      *
      * @return array|object|stdClass|null

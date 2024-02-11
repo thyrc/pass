@@ -76,7 +76,7 @@ trait ReflectionHelper
         $refProperty = self::getAccessibleRefProperty($obj, $property);
 
         if (is_object($obj)) {
-        $refProperty->setValue($obj, $value);
+            $refProperty->setValue($obj, $value);
         } else {
             $refProperty->setValue(null, $value);
         }

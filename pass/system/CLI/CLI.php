@@ -220,8 +220,8 @@ class CLI
      * // Do not provide options but requires a valid email
      * $email = CLI::prompt('What is your email?', null, 'required|valid_email');
      *
-     * @param string       $field      Output "field" question
-     * @param array|string $options    String to a default value, array to a list of options (the first option will be the default value)
+     * @param string            $field      Output "field" question
+     * @param array|string      $options    String to a default value, array to a list of options (the first option will be the default value)
      * @param array|string|null $validation Validation rules
      *
      * @return string The user input
@@ -584,8 +584,8 @@ class CLI
      * Returns the given text with the correct color codes for a foreground and
      * optionally a background color.
      *
-     * @param string $text       The text to color
-     * @param string $foreground The foreground color
+     * @param string      $text       The text to color
+     * @param string      $foreground The foreground color
      * @param string|null $background The background color
      * @param string|null $format     Other formatting to apply. Currently only 'underline' is understood
      *

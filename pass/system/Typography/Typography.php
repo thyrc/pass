@@ -325,7 +325,7 @@ class Typography
      */
     public function nl2brExceptPre(string $str): string
     {
-        $newstr = '';
+        $newstr   = '';
         $docTypes = new DocTypes();
 
         for ($ex = explode('pre>', $str), $ct = count($ex), $i = 0; $i < $ct; $i++) {

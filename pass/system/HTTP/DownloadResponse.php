@@ -285,7 +285,7 @@ class DownloadResponse extends Response
         }
 
         if (! $this->hasHeader('Content-Disposition')) {
-        $this->setHeader('Content-Disposition', $this->getContentDisposition());
+            $this->setHeader('Content-Disposition', $this->getContentDisposition());
         }
 
         $this->setHeader('Expires-Disposition', '0');

@@ -305,7 +305,7 @@ trait ResponseTrait
      * and sets the correct Content-Type header for our response.
      *
      * @param array|object|string $body
-     * @param string       $format Valid: json, xml
+     * @param string              $format Valid: json, xml
      *
      * @return false|string
      *

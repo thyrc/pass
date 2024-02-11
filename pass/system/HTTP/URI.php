@@ -151,7 +151,7 @@ class URI
     /**
      * Builds a representation of the string from the component parts.
      *
-     * @param string|null $scheme    URI scheme. E.g., http, ftp
+     * @param string|null $scheme URI scheme. E.g., http, ftp
      *
      * @return string URI string with only passed parts. Maybe incomplete as a URI.
      */

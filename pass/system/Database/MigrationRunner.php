@@ -213,7 +213,7 @@ class MigrationRunner
      *
      * Calls each migration step required to get to the provided batch
      *
-     * @param int $targetBatch Target batch number, or negative for a relative batch, 0 for all
+     * @param int         $targetBatch Target batch number, or negative for a relative batch, 0 for all
      * @param string|null $group       Deprecated. The designation has no effect.
      *
      * @return bool True on success, FALSE on failure or no migrations are found

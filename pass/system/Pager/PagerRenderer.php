@@ -87,8 +87,8 @@ class PagerRenderer
     {
         // `first` and `last` will be updated by `setSurroundCount()`.
         // You must call `setSurroundCount()` after instantiation.
-        $this->first        = 1;
-        $this->last         = $details['pageCount'];
+        $this->first = 1;
+        $this->last  = $details['pageCount'];
 
         $this->current      = $details['currentPage'];
         $this->total        = $details['total'];

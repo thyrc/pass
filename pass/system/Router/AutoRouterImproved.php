@@ -269,14 +269,14 @@ final class AutoRouterImproved implements AutoRouterInterface
             // Controller is found.
             $baseControllerName = class_basename($this->controller);
 
-        // Prevent access to default controller path
-        if (
-            strtolower($baseControllerName) === strtolower($this->defaultController)
-        ) {
-            throw new PageNotFoundException(
+            // Prevent access to default controller path
+            if (
+                strtolower($baseControllerName) === strtolower($this->defaultController)
+            ) {
+                throw new PageNotFoundException(
                     'Cannot access the default controller "' . $this->controller . '" with the controller name URI path.'
-            );
-        }
+                );
+            }
         } elseif ($this->searchLastDefaultController()) {
             // The default Controller is found.
             $baseControllerName = class_basename($this->controller);
@@ -294,7 +294,7 @@ final class AutoRouterImproved implements AutoRouterInterface
         $method = '';
         if ($methodParam !== null) {
             $method = $httpVerb . ucfirst($this->translateURIDashes($methodParam));
-            }
+        }
 
         if ($methodParam !== null && method_exists($this->controller, $method)) {
             // Method is found.
@@ -308,20 +308,20 @@ final class AutoRouterImproved implements AutoRouterInterface
             }
             if ($this->paramPos !== null) {
                 $this->paramPos++;
-        }
+            }
 
             // Prevent access to default controller's method
             if (strtolower($baseControllerName) === strtolower($this->defaultController)) {
                 throw new PageNotFoundException(
                     'Cannot access the default controller "' . $this->controller . '::' . $this->method . '"'
                 );
-        }
+            }
 
             // Prevent access to default method path
             if (strtolower($this->method) === strtolower($defaultMethod)) {
                 throw new PageNotFoundException(
                     'Cannot access the default method "' . $this->method . '" with the method name URI path.'
-        );
+                );
             }
         } elseif (method_exists($this->controller, $defaultMethod)) {
             // The default method is found.
@@ -410,14 +410,14 @@ final class AutoRouterImproved implements AutoRouterInterface
     private function checkParameters(string $uri): void
     {
         try {
-        $refClass  = new ReflectionClass($this->controller);
+            $refClass = new ReflectionClass($this->controller);
         } catch (ReflectionException $e) {
             throw PageNotFoundException::forControllerNotFound($this->controller, $this->method);
         }
 
         try {
-        $refMethod = $refClass->getMethod($this->method);
-        $refParams = $refMethod->getParameters();
+            $refMethod = $refClass->getMethod($this->method);
+            $refParams = $refMethod->getParameters();
         } catch (ReflectionException $e) {
             throw new MethodNotFoundException();
         }
@@ -454,7 +454,7 @@ final class AutoRouterImproved implements AutoRouterInterface
     {
         if ($this->translateURIDashes === false) {
             return;
-            }
+        }
 
         $paramPos = $this->paramPos ?? count($this->segments);
 

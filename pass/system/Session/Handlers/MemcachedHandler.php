@@ -70,8 +70,8 @@ class MemcachedHandler extends BaseHandler
             $this->keyPrefix .= $this->ipAddress . ':';
         }
 
-            ini_set('memcached.sess_prefix', $this->keyPrefix);
-        }
+        ini_set('memcached.sess_prefix', $this->keyPrefix);
+    }
 
     /**
      * Re-initialize existing session, or creates a new one.

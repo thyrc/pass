@@ -98,20 +98,20 @@ class Routes extends BaseCollector
         ];
 
         // Defined Routes
-        $routes  = [];
+        $routes = [];
 
         $definedRouteCollector = new DefinedRouteCollector($rawRoutes);
 
         foreach ($definedRouteCollector->collect() as $route) {
-                // filter for strings, as callbacks aren't displayable
+            // filter for strings, as callbacks aren't displayable
             if ($route['handler'] !== '(Closure)') {
-                    $routes[] = [
+                $routes[] = [
                     'method'  => strtoupper($route['method']),
                     'route'   => $route['route'],
                     'handler' => $route['handler'],
-                    ];
-                }
+                ];
             }
+        }
 
         return [
             'matchedRoute' => $matchedRoute,

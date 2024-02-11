@@ -71,7 +71,7 @@ class Routes extends BaseCommand
      * @var array<string, string>
      */
     protected $options = [
-        '-h' => 'Sort by Handler.',
+        '-h'     => 'Sort by Handler.',
         '--host' => 'Specify hostname in request URI.',
     ];
 
@@ -98,7 +98,7 @@ class Routes extends BaseCommand
             unset($_SERVER['HTTP_HOST']);
         }
 
-        $methods    = [
+        $methods = [
             'get',
             'head',
             'post',
@@ -123,15 +123,15 @@ class Routes extends BaseCommand
 
             $routeName = ($route['route'] === $route['name']) ? '»' : $route['name'];
 
-                    $tbody[] = [
+            $tbody[] = [
                 strtoupper($route['method']),
                 $route['route'],
-                        $routeName,
+                $routeName,
                 $route['handler'],
-                        implode(' ', array_map('class_basename', $filters['before'])),
-                        implode(' ', array_map('class_basename', $filters['after'])),
-                    ];
-                }
+                implode(' ', array_map('class_basename', $filters['before'])),
+                implode(' ', array_map('class_basename', $filters['after'])),
+            ];
+        }
 
         if ($collection->shouldAutoRoute()) {
             $autoRoutesImproved = config(Feature::class)->autoRoutesImproved ?? false;

@@ -32,7 +32,7 @@ interface ValidationInterface
      * Check; runs the validation process, returning true or false
      * determining whether or not validation was successful.
      *
-     * @param array|bool|float|int|object|string|null $value  Value to validate.
+     * @param array|bool|float|int|object|string|null $value   Value to validate.
      * @param array|string                            $rules
      * @param string[]                                $errors
      * @param string|null                             $dbGroup The database group to use.

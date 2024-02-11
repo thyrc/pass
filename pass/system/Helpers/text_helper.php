@@ -410,10 +410,10 @@ if (! function_exists('ellipsize')) {
      *
      * This function will strip tags from a string, split it at its max_length and ellipsize
      *
-     * @param string $str       String to ellipsize
-     * @param int    $maxLength Max length of string
+     * @param string    $str       String to ellipsize
+     * @param int       $maxLength Max length of string
      * @param float|int $position  int (1|0) or float, .5, .2, etc for position to split
-     * @param string $ellipsis  ellipsis ; Default '...'
+     * @param string    $ellipsis  ellipsis ; Default '...'
      *
      * @return string Ellipsized string
      */
@@ -584,6 +584,7 @@ if (! function_exists('random_string')) {
 
                 return bin2hex(random_bytes($len / 2));
         }
+
         // 'basic' type treated as default
         return (string) mt_rand();
     }
@@ -700,8 +701,6 @@ if (! function_exists('excerpt')) {
      * @param string $phrase   Phrase that will be searched for.
      * @param int    $radius   The amount of characters returned around the phrase.
      * @param string $ellipsis Ending that will be appended
-     *
-     * @return string
      *
      * If no $phrase is passed, will generate an excerpt of $radius characters
      * from the beginning of $text.

@@ -25,7 +25,7 @@ class Table
     /**
      * Data for table rows
      *
-     * @var array
+     * @var list<array>|list<list<array>>
      */
     public $rows = [];
 
@@ -168,7 +168,7 @@ class Table
 
         // Turn off the auto-heading feature since it's doubtful we
         // will want headings from a one-dimensional array
-        $this->autoHeading = false;
+        $this->autoHeading         = false;
         $this->syncRowsWithHeading = false;
 
         if ($columnLimit === 0) {
@@ -258,7 +258,7 @@ class Table
      *
      * Ensures a standard associative array format for all cell data
      *
-     * @return array
+     * @return array<string, array>|list<array>
      */
     protected function _prepArgs(array $args)
     {
@@ -381,7 +381,7 @@ class Table
                     $cell = $cell['data'] ?? '';
                     $out .= $temp;
 
-                    if ($cell === '' || $cell === null) {
+                    if ($cell === '') {
                         $out .= $this->emptyCells;
                     } elseif (isset($this->function)) {
                         $out .= ($this->function)($cell);

@@ -15,7 +15,7 @@ if (! function_exists('number_to_size')) {
     /**
      * Formats a numbers as bytes, based on size, and adds the appropriate suffix
      *
-     * @param int|string $num Will be cast as int
+     * @param int|string            $num    Will be cast as int
      * @param non-empty-string|null $locale [optional]
      *
      * @return bool|string
@@ -69,8 +69,8 @@ if (! function_exists('number_to_amount')) {
      *
      * @see https://simple.wikipedia.org/wiki/Names_for_large_numbers
      *
-     * @param int|string  $num       Will be cast as int
-     * @param int         $precision [optional] The optional number of decimal digits to round to.
+     * @param int|string            $num       Will be cast as int
+     * @param int                   $precision [optional] The optional number of decimal digits to round to.
      * @param non-empty-string|null $locale    [optional]
      *
      * @return bool|string

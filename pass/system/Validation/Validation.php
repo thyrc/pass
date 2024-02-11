@@ -286,13 +286,13 @@ class Validation implements ValidationInterface
 
         $rules = $this->processIfExist($field, $rules, $data);
         if ($rules === true) {
-                return true;
-            }
+            return true;
+        }
 
         $rules = $this->processPermitEmpty($value, $rules, $data);
         if ($rules === true) {
-                    return true;
-                }
+            return true;
+        }
 
         foreach ($rules as $i => $rule) {
             $isCallable = is_callable($rule);
@@ -891,7 +891,7 @@ class Validation implements ValidationInterface
      * Attempts to find the appropriate error message
      *
      * @param non-empty-string|null $label
-     * @param string|null $value The value that caused the validation to fail.
+     * @param string|null           $value The value that caused the validation to fail.
      */
     protected function getErrorMessage(
         string $rule,

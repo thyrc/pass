@@ -375,7 +375,7 @@ class Parser
 
             $stash = $val;
             try {
-            $copy[$i] = $refmarker;
+                $copy[$i] = $refmarker;
             } catch (TypeError $e) {
                 $child->reference = true;
             }

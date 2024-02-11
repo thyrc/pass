@@ -25,7 +25,7 @@ class Rules
      * The value does not match another field in $data.
      *
      * @param string|null $str
-     * @param array $data Other field/value pairs
+     * @param array       $data Other field/value pairs
      */
     public function differs($str, string $field, array $data): bool
     {
@@ -181,7 +181,7 @@ class Rules
      * Matches the value of another field in $data.
      *
      * @param string|null $str
-     * @param array $data Other field/value pairs
+     * @param array       $data Other field/value pairs
      */
     public function matches($str, string $field, array $data): bool
     {
@@ -316,7 +316,7 @@ class Rules
         // If the field is present we can safely assume that
         // the field is here, no matter whether the corresponding
         // search field is present or not.
-        $present     = $this->required($str ?? '');
+        $present = $this->required($str ?? '');
 
         if ($present) {
             return true;

@@ -225,9 +225,9 @@ class Security implements SecurityInterface
 
     private function configureCookie(CookieConfig $cookie): void
     {
-            $cookiePrefix     = $cookie->prefix;
-            $this->cookieName = $cookiePrefix . $this->rawCookieName;
-            Cookie::setDefaults($cookie);
+        $cookiePrefix     = $cookie->prefix;
+        $this->cookieName = $cookiePrefix . $this->rawCookieName;
+        Cookie::setDefaults($cookie);
     }
 
     /**
@@ -326,9 +326,9 @@ class Security implements SecurityInterface
             $body = $request->getBody() ?? '';
             $json = json_decode($body);
             if ($json !== null && json_last_error() === JSON_ERROR_NONE) {
-            // We kill this since we're done and we don't want to pollute the JSON data.
+                // We kill this since we're done and we don't want to pollute the JSON data.
                 unset($json->{$this->config->tokenName});
-            $request->setBody(json_encode($json));
+                $request->setBody(json_encode($json));
             } else {
                 parse_str($body, $parsed);
                 // We kill this since we're done and we don't want to pollute the BODY data.
@@ -357,7 +357,7 @@ class Security implements SecurityInterface
         $body = (string) $request->getBody();
 
         if ($body !== '') {
-        $json = json_decode($body);
+            $json = json_decode($body);
             if ($json !== null && json_last_error() === JSON_ERROR_NONE) {
                 return $json->{$this->config->tokenName} ?? null;
             }

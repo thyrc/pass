@@ -55,7 +55,7 @@ class Session implements SessionInterface
      *
      * @deprecated Use $this->config->cookieName.
      */
-    protected $sessionCookieName = 'pass_sess';
+    protected $sessionCookieName = 'ci_session';
 
     /**
      * The number of SECONDS you want the session to last.
@@ -95,7 +95,7 @@ class Session implements SessionInterface
      *
      * @deprecated Use $this->config->matchIP.
      */
-    protected $sessionMatchIP = true;
+    protected $sessionMatchIP = false;
 
     /**
      * How many seconds between CI regenerating the session ID.
@@ -115,7 +115,7 @@ class Session implements SessionInterface
      *
      * @deprecated Use $this->config->regenerateDestroy.
      */
-    protected $sessionRegenerateDestroy = true;
+    protected $sessionRegenerateDestroy = false;
 
     /**
      * The session cookie instance.
@@ -496,7 +496,7 @@ class Session implements SessionInterface
             return $value;
         }
 
-        if ($_SESSION === []) {
+        if (! isset($_SESSION) || $_SESSION === []) {
             return $key === null ? [] : null;
         }
 

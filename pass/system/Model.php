@@ -485,7 +485,7 @@ class Model extends BaseModel
      *
      * @param array|null $row Data
      * @phpstan-param row_array|null $row
-     * @param bool       $returnSQL Set to true to return Query String
+     * @param bool $returnSQL Set to true to return Query String
      *
      * @return BaseResult|false|Query|string
      */
@@ -500,7 +500,7 @@ class Model extends BaseModel
      *  ['source' => 'message']
      * This method works only with dbCalls.
      *
-     * @return array<string,string>
+     * @return array<string, string>
      */
     protected function doErrors()
     {
@@ -720,7 +720,7 @@ class Model extends BaseModel
      *
      * @param array|object|null $row
      * @phpstan-param row_array|object|null $row
-     * @param bool              $returnID Whether insert ID should be returned or not.
+     * @param bool $returnID Whether insert ID should be returned or not.
      *
      * @return bool|int|string
      * @phpstan-return ($returnID is true ? int|string|false : bool)
@@ -812,7 +812,7 @@ class Model extends BaseModel
      * properties as an array with raw values.
      *
      * @param object $object    Object
-     * @param bool          $recursive If true, inner entities will be cast as array as well
+     * @param bool   $recursive If true, inner entities will be cast as array as well
      *
      * @return array<string, mixed>
      *
