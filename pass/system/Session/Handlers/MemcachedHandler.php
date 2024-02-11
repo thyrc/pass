@@ -70,10 +70,8 @@ class MemcachedHandler extends BaseHandler
             $this->keyPrefix .= $this->ipAddress . ':';
         }
 
-        if (! empty($this->keyPrefix)) {
             ini_set('memcached.sess_prefix', $this->keyPrefix);
         }
-    }
 
     /**
      * Re-initialize existing session, or creates a new one.
@@ -125,7 +123,7 @@ class MemcachedHandler extends BaseHandler
             }
         }
 
-        if (empty($serverList)) {
+        if ($serverList === []) {
             $this->logger->error('Session: Memcached server pool is empty.');
 
             return false;

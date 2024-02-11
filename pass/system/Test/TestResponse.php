@@ -135,8 +135,11 @@ class TestResponse extends TestCase
         if ($status >= 400 || $status < 200) {
             return false;
         }
+
+        $body = (string) $this->response->getBody();
+
         // Empty bodies are not considered valid, unless in redirects
-        return ! ($status < 300 && empty($this->response->getBody()));
+        return ! ($status < 300 && $body === '');
     }
 
     /**

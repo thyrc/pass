@@ -176,9 +176,9 @@ class View implements RendererInterface
         // clean it unless we mean it to.
         $saveData ??= $this->saveData;
 
-        $fileExt                     = pathinfo($view, PATHINFO_EXTENSION);
+        $fileExt = pathinfo($view, PATHINFO_EXTENSION);
         // allow Views as .html, .tpl, etc (from CI3)
-        $this->renderVars['view'] = empty($fileExt) ? $view . '.php' : $view;
+        $this->renderVars['view'] = ($fileExt === '') ? $view . '.php' : $view;
 
         $this->renderVars['options'] = $options ?? [];
 
@@ -207,12 +207,12 @@ class View implements RendererInterface
             $this->renderVars['file'] = $this->loader->locateFile(
                 $this->renderVars['view'],
                 'Views',
-                empty($fileExt) ? 'php' : $fileExt
+                ($fileExt === '') ? 'php' : $fileExt
             );
         }
 
-        // locateFile will return an empty string if the file cannot be found.
-        if (empty($this->renderVars['file'])) {
+        // locateFile() will return false if the file cannot be found.
+        if ($this->renderVars['file'] === false) {
             throw ViewException::forInvalidFile($this->renderVars['view']);
         }
 
@@ -454,9 +454,9 @@ class View implements RendererInterface
         foreach ($this->sections[$sectionName] as $key => $contents) {
             echo $contents;
             if ($saveData === false) {
-            unset($this->sections[$sectionName][$key]);
+                unset($this->sections[$sectionName][$key]);
+            }
         }
-    }
     }
 
     /**

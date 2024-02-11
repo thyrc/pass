@@ -78,8 +78,7 @@ abstract class BaseHandler implements CacheInterface
      *
      * @param string  $key      Cache item name
      * @param int     $ttl      Time to live
-     * @param Closure $callback Callback return value
-     * @phpstan-param Closure(): mixed $callback
+     * @param Closure(): mixed $callback Callback return value
      *
      * @return array|bool|float|int|object|string|null
      */
