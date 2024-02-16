@@ -21,15 +21,19 @@ path "sys/wrapping/wrap" {
 }
 ```
 
-Setup `wrap` approle
+Setup `wrap` approle.
+
+Optionally use 'token_bound_cidrs' to tie the wrapping token to the pass host.
 
 ```
 vault auth enable approle
 vault policy write wrap policies/wrap.hcl
-vault write auth/approle/role/wrap token_policies="wrap" token_ttl=48h token_max_ttl=96h
+vault write auth/approle/role/wrap token_policies="wrap" token_ttl=48h [ token_bound_cidrs="127.0.0.1/32" ]
 vault read auth/approle/role/wrap/role-id
 vault write -f auth/approle/role/wrap/secret-id
 ``` 
+
+The Role ID and Secret ID are needed to generate a vault token later (`init_pass.sh`).
 
 #### pass.example.com
 
@@ -62,15 +66,19 @@ chown www-data:www-data /var/www/pass/.env
 chmod 0640 /var/www/pass/.env
 ```
 
-Initialize approle token renewal. Be sure to swap `ROLE_ID` and `SECRET_ID` in `init_pass.sh` with the actual IDs.
+Initialize approle token.
+A combination of a Role ID and Secret ID is required.
 
 ```
 chmod 0600 /root/bin/init_pass.sh
+chmod 0600 /root/bin/renew_pass_token.sh
 chown root:root /root/bin/init_pass.sh
+chown root:root /root/bin/renew_pass_token.sh
+
 bash /root/bin/init_pass.sh
 ```
 
-Install crontab
+Install crontab / setup token renewal
 
 ```
 vim /etc/cron.d/renew_pass_token
