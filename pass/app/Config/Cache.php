@@ -54,12 +54,12 @@ class Cache extends BaseConfig
      * Whether to take the URL query string into consideration when generating
      * output cache files. Valid options are:
      *
-     *    false      = Disabled
-     *    true       = Enabled, take all query parameters into account.
-     *                 Please be aware that this may result in numerous cache
-     *                 files generated for the same page over and over again.
+     *    false = Disabled
+     *    true  = Enabled, take all query parameters into account.
+     *            Please be aware that this may result in numerous cache
+     *            files generated for the same page over and over again.
      *    ['q'] = Enabled, but only take into account the specified list
-     *                 of query parameters.
+     *            of query parameters.
      *
      * @var bool|string[]
      */

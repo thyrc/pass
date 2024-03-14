@@ -23,7 +23,7 @@ path "sys/wrapping/wrap" {
 
 Setup `wrap` approle.
 
-Optionally use 'token_bound_cidrs' to tie the wrapping token to the pass host.
+Optionally use `token_bound_cidrs` to tie the wrapping token to the pass host.
 
 ```
 vault auth enable approle

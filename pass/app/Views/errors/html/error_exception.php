@@ -11,11 +11,11 @@ $errorId = uniqid('error', true);
     <meta name="robots" content="noindex">
 
     <title><?= esc($title) ?></title>
-    <style type="text/css">
+    <style>
         <?= preg_replace('#[\r\n\t ]+#', ' ', file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'debug.css')) ?>
     </style>
 
-    <script type="text/javascript">
+    <script>
         <?= file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'debug.js') ?>
     </script>
 </head>
@@ -90,7 +90,7 @@ $errorId = uniqid('error', true);
                     <li>
                         <p>
                             <!-- Trace info -->
-                            <?php if (isset($row['file']) && is_file($row['file'])) :?>
+                            <?php if (isset($row['file']) && is_file($row['file'])) : ?>
                                 <?php
                                 if (isset($row['function']) && in_array($row['function'], ['include', 'include_once', 'require', 'require_once'], true)) {
                                     echo esc($row['function'] . ' ' . clean_path($row['file']));
@@ -313,11 +313,11 @@ $errorId = uniqid('error', true);
                         </thead>
                         <tbody>
                         <?php foreach ($headers as $header) : ?>
-                                <tr>
+                            <tr>
                                 <td><?= esc($header->getName(), 'html') ?></td>
                                 <td><?= esc($header->getValueLine(), 'html') ?></td>
-                                </tr>
-                            <?php endforeach; ?>
+                            </tr>
+                        <?php endforeach; ?>
                         </tbody>
                     </table>
 
