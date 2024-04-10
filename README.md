@@ -1,9 +1,11 @@
 pass
 ====
 
-Simple password / file sharing tool w/ HashiCorp Vault backend (https://www.vaultproject.io/).
+Simple password / file sharing tool
 
-Written using PHP framework CodeIgniter (https://codeigniter.com/).
+Uses HashiCorp Vault (https://www.vaultproject.io/) or OpenBao (https://github.com/openbao/openbao) as backend.
+
+Written using PHP Framework CodeIgniter (https://codeigniter.com/).
 
 ### Initial Setup
 
@@ -55,10 +57,17 @@ Avoid duplicate Cache-Control headers w/
 session.cache_limiter = ''
 ```
 
+And make sure the nginx user can access the php-fpm socket. E.g.
+```
+listen.owner = www-data
+listen.group = www-data
+```
+
 Setup application root.
 
 ```
 chown -R root:root /var/www/pass
+# user:group depends on `user` / `group` settings in your php-fpm config
 chown -R www-data:www-data /var/www/pass/writable
 
 touch /var/www/pass/.env

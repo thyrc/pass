@@ -30,50 +30,16 @@ new_token=""
 
 if (set -o noclobber; echo "$$" >"$lock_file") 2>/dev/null
 then
-    trap 'set +e; \
+    trap 'exit_code=$?; \
+    set +e; \
     rm -f "$lock_file"; \
     rm -rf "$temp_dir"; \
-    exit $?' INT TERM EXIT ERR
+    exit $exit_code' INT TERM EXIT ERR
 else
     >&2 echo "Failed to acquire lock: '$lock_file'."
     >&2 echo "Held by PID $(cat "$lock_file")"
     exit 1
 fi
-
-###########
-# functions
-###########
-
-usage () {
-    cat <<USAGE
-Usage: $script_name
-USAGE
-    exit
-}
-
-#########
-# options
-#########
-
-while [[ "$#" -gt 0 ]]
-do
-    case "$1" in
-        --help | -h )
-            usage
-            ;;
-        -- )
-            shift
-            break
-            ;;
-        * )
-            usage
-            ;;
-    esac
-done
-
-################
-# sanitiy checks
-################
 
 ###########
 # fn main()
