@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * This file is part of CodeIgniter 4 framework.
  *
@@ -101,7 +103,7 @@ class Serve extends BaseCommand
         $docroot = escapeshellarg(FCPATH);
 
         // Mimic Apache's mod_rewrite functionality with user settings.
-        $rewrite = escapeshellarg(__DIR__ . '/rewrite.php');
+        $rewrite = escapeshellarg(SYSTEMPATH . 'rewrite.php');
 
         // Call PHP's built-in webserver, making sure to set our
         // base path to the public folder, and to use the rewrite file

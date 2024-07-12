@@ -30,7 +30,7 @@ Optionally use `token_bound_cidrs` to tie the wrapping token to the pass host.
 ```
 vault auth enable approle
 vault policy write wrap policies/wrap.hcl
-vault write auth/approle/role/wrap token_policies="wrap" token_ttl=48h [ token_bound_cidrs="127.0.0.1/32" ]
+vault write auth/approle/role/wrap token_policies="wrap" token_ttl=48h token_period=48h [ token_bound_cidrs="127.0.0.1/32" ]
 vault read auth/approle/role/wrap/role-id
 vault write -f auth/approle/role/wrap/secret-id
 ``` 
@@ -50,11 +50,6 @@ Don't forget to set `post_max_size` and `upload_max_filesize` in fpm's `php.ini`
 ```
 post_max_size = 32M
 upload_max_filesize = 32M
-```
-
-Avoid duplicate Cache-Control headers w/
-```
-session.cache_limiter = ''
 ```
 
 And make sure the nginx user can access the php-fpm socket. E.g.

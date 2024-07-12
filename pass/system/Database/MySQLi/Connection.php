@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * This file is part of CodeIgniter 4 framework.
  *
@@ -235,6 +237,8 @@ class Connection extends BaseConnection
     /**
      * Keep or establish the connection if no queries have been sent for
      * a length of time exceeding the server's idle timeout.
+     *
+     * @return void
      */
     public function reconnect()
     {
@@ -244,6 +248,8 @@ class Connection extends BaseConnection
 
     /**
      * Close the database connection.
+     *
+     * @return void
      */
     protected function _close()
     {
@@ -387,7 +393,7 @@ class Connection extends BaseConnection
      */
     protected function _listTables(bool $prefixLimit = false, ?string $tableName = null): string
     {
-        $sql = 'SHOW TABLES FROM ' . $this->escapeIdentifiers($this->database);
+        $sql = 'SHOW TABLES FROM ' . $this->escapeIdentifier($this->database);
 
         if ($tableName !== null) {
             return $sql . ' LIKE ' . $this->escape($tableName);

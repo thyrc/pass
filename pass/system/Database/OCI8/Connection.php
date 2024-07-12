@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * This file is part of CodeIgniter 4 framework.
  *
@@ -102,6 +104,10 @@ class Connection extends BaseConnection
      */
     private function isValidDSN(): bool
     {
+        if ($this->DSN === null || $this->DSN === '') {
+            return false;
+        }
+
         foreach ($this->validDSNs as $regexp) {
             if (preg_match($regexp, $this->DSN)) {
                 return true;
@@ -118,13 +124,13 @@ class Connection extends BaseConnection
      */
     public function connect(bool $persistent = false)
     {
-        if (empty($this->DSN) && ! $this->isValidDSN()) {
+        if (! $this->isValidDSN()) {
             $this->buildDSN();
         }
 
         $func = $persistent ? 'oci_pconnect' : 'oci_connect';
 
-        return empty($this->charset)
+        return ($this->charset === '')
             ? $func($this->username, $this->password, $this->DSN)
             : $func($this->username, $this->password, $this->DSN, $this->charset);
     }
@@ -221,7 +227,7 @@ class Connection extends BaseConnection
     public function parseInsertTableName(string $sql): string
     {
         $commentStrippedSql = preg_replace(['/\/\*(.|\n)*?\*\//m', '/--.+/'], '', $sql);
-        $isInsertQuery      = strpos(strtoupper(ltrim($commentStrippedSql)), 'INSERT') === 0;
+        $isInsertQuery      = str_starts_with(strtoupper(ltrim($commentStrippedSql)), 'INSERT');
 
         if (! $isInsertQuery) {
             return '';
@@ -230,7 +236,7 @@ class Connection extends BaseConnection
         preg_match('/(?is)\b(?:into)\s+("?\w+"?)/', $commentStrippedSql, $match);
         $tableName = $match[1] ?? '';
 
-        return strpos($tableName, '"') === 0 ? trim($tableName, '"') : strtoupper($tableName);
+        return str_starts_with($tableName, '"') ? trim($tableName, '"') : strtoupper($tableName);
     }
 
     /**
@@ -267,7 +273,7 @@ class Connection extends BaseConnection
      */
     protected function _listColumns(string $table = ''): string
     {
-        if (strpos($table, '.') !== false) {
+        if (str_contains($table, '.')) {
             sscanf($table, '%[^.].%s', $owner, $table);
         } else {
             $owner = $this->username;
@@ -287,7 +293,7 @@ class Connection extends BaseConnection
      */
     protected function _fieldData(string $table): array
     {
-        if (strpos($table, '.') !== false) {
+        if (str_contains($table, '.')) {
             sscanf($table, '%[^.].%s', $owner, $table);
         } else {
             $owner = $this->username;
@@ -331,7 +337,7 @@ class Connection extends BaseConnection
      */
     protected function _indexData(string $table): array
     {
-        if (strpos($table, '.') !== false) {
+        if (str_contains($table, '.')) {
             sscanf($table, '%[^.].%s', $owner, $table);
         } else {
             $owner = $this->username;
@@ -629,8 +635,8 @@ class Connection extends BaseConnection
             return;
         }
 
-        $isEasyConnectableHostName = $this->hostname !== '' && strpos($this->hostname, '/') === false && strpos($this->hostname, ':') === false;
-        $easyConnectablePort       = ! empty($this->port) && ctype_digit($this->port) ? ':' . $this->port : '';
+        $isEasyConnectableHostName = $this->hostname !== '' && ! str_contains($this->hostname, '/') && ! str_contains($this->hostname, ':');
+        $easyConnectablePort       = ($this->port !== '') && ctype_digit((string) $this->port) ? ':' . $this->port : '';
         $easyConnectableDatabase   = $this->database !== '' ? '/' . ltrim($this->database, '/') : '';
 
         if ($isEasyConnectableHostName && ($easyConnectablePort !== '' || $easyConnectableDatabase !== '')) {
