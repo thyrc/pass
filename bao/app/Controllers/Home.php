@@ -34,7 +34,7 @@ class Home extends BaseController {
         helper(['form', 'url']);
 
         $input = $this->validate([
-                'secret' => 'required|max_length[8192]'
+                'secret' => 'required|max_length[32768]'
         ]);
 
         if (!$input) {

@@ -14,7 +14,7 @@
             <div class="field">
                 <label class="label" for="secret">Your secret:</label>
                     <p class="control">
-                        <textarea class="textarea has-fixed-size" name="secret" id="secret" autofocus required maxlength="8192"></textarea>
+                        <textarea class="textarea has-fixed-size" name="secret" id="secret" autofocus required maxlength="32768"></textarea>
                     </p>
             </div>
             <div class="field is-grouped">
