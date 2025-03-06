@@ -1,0 +1,18 @@
+/var/log/openbao/audit.log
+{
+    rotate 14
+    daily
+    create 0600 openbao openbao
+    missingok
+    notifempty
+    compress
+    delaycompress
+    sharedscripts
+    postrotate
+    if type -p systemctl 2>&1 1>/dev/null && systemctl is-system-running 2>&1 1>/dev/null ; then
+            systemctl kill -s HUP openbao.service
+    else
+            pkill -HUP -u openbao openbao 2>&1 1>/dev/null
+    fi
+    endscript
+}

@@ -1,0 +1,5 @@
+SHELL=/bin/bash
+MAILTO=""
+
+55 2 * * *	root	/bin/bash /root/bin/renew_bao_token.sh
+55 3 * * *	root	/bin/bash /root/bin/rotate_basic_auth.sh
