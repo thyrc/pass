@@ -1,8 +1,8 @@
 <section class="section">
     <div class="container">
-        <div class="notification is-info is-light">
+        <div class="notification is-info is-light" id="upload-notification">
             <button class="delete"></button>
-            <div class="content is-small">
+            <div class="content is-small mr-4">
                 You can upload small files (up to 20 MB) and - like any other secret shared via <?= esc($_SERVER['SERVER_NAME']) ?> - these files can be retrieved <strong>once</strong> (and only once) within the next <strong>6 hours</strong> using the generated link.
             </div>
         </div>

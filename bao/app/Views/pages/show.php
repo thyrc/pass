@@ -8,7 +8,7 @@
         <div class="notification is-success is-light">
             <button class="delete"></button>
             <strong>YAY!</strong> We successfully unwrapped a secret for you.
-            <div class="content is-small">
+            <div class="content is-small mr-4">
                 Move your mouse cursor over the gray box below to show the secret.
             </div>
         </div>

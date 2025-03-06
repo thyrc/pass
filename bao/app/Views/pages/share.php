@@ -5,10 +5,10 @@
             <strong>Error:</strong> <?= esc($error) ?>
         </div>
     <?php } else {?>
-        <div class="notification is-success is-light">
+        <div class="notification is-success is-light" id="share-notification">
             <button class="delete"></button>
             <strong>Success!</strong>
-            <div class="content is-small">
+            <div class="content is-small mr-4">
                 Send the following URL (without opening the link yourself ;) to share your secret.
             </div>
         </div>

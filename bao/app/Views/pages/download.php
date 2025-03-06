@@ -8,7 +8,7 @@
         <div class="notification is-success is-light">
             <button class="delete"></button>
             <strong>YAY!</strong> We successfully unwrapped a secret for you.
-            <div class="content is-small">
+            <div class="content is-small mr-4">
                 Someone wants to share a file with you.
             </div>
         </div>

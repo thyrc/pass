@@ -8,7 +8,7 @@
         <div class="notification is-success is-light">
             <button class="delete"></button>
             <strong>Success!</strong>
-            <div class="content is-small">
+            <div class="content is-small mr-4">
                 We retrieved your file.
             </div>
         </div>
