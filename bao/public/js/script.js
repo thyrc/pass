@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     var $notification = $delete.parentNode;
 
     $delete.addEventListener('click', () => {
-      localStorage.setItem($notification.id, "hide");
+      sessionStorage.setItem($notification.id, "hide");
       $notification.parentNode.removeChild($notification);
     });
   });
@@ -14,25 +14,25 @@ document.addEventListener('DOMContentLoaded', () => {
   var $downloadNote = document.getElementById("download-notification");
 
   if ($wrappingNote) {
-    if (localStorage.getItem("wrapping-notification") === "hide") {
+    if (sessionStorage.getItem("wrapping-notification") === "hide") {
       $wrappingNote.style.display = "none";
     };
   };
 
   if ($uploadNote) {
-    if (localStorage.getItem("upload-notification") === "hide") {
+    if (sessionStorage.getItem("upload-notification") === "hide") {
       $uploadNote.style.display = "none";
     };
   };
 
   if ($shareNote) {
-    if (localStorage.getItem("share-notification") === "hide") {
+    if (sessionStorage.getItem("share-notification") === "hide") {
       $shareNote.style.display = "none";
     };
   };
 
   if ($downloadNote) {
-    if (localStorage.getItem("download-notification") === "hide") {
+    if (sessionStorage.getItem("download-notification") === "hide") {
       $downloadNote.style.display = "none";
     };
   };
